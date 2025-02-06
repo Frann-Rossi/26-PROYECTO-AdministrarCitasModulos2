@@ -1,4 +1,7 @@
-export class AdminCitas {
+import { cargarEdicion } from "../funciones.js";
+import { contenedorCitas } from "../selectores.js";
+
+export default class AdminCitas {
 	constructor() {
 		this.citas = [];
 	}

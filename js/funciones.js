@@ -1,12 +1,23 @@
-import { AdminCitas } from "./class/AdminCitas";
-
-function datosCitas(e) {
-	citaObj[e.target.name] = e.target.value;
-}
+import AdminCitas from "./class/AdminCitas.js";
+import Notificacion from "./class/Notificaciones.js";
+import {
+	emailInput,
+	fechaInput,
+	formulario,
+	formularioInput,
+	pacienteInput,
+	propietarioInput,
+	sintomasInput,
+} from "./selectores.js";
+import { citaObj, editando } from "./variables.js";
 
 const citas = new AdminCitas();
 
-function submitCita(e) {
+export function datosCitas(e) {
+	citaObj[e.target.name] = e.target.value;
+}
+
+export function submitCita(e) {
 	e.preventDefault();
 
 	if (Object.values(citaObj).some((valor) => valor.trim() === "")) {
@@ -17,7 +28,7 @@ function submitCita(e) {
 		return;
 	}
 
-	if (editando) {
+	if (editando.value) {
 		citas.editar({ ...citaObj });
 		new Notificacion({
 			text: "Paciente Editado",
@@ -34,10 +45,10 @@ function submitCita(e) {
 	formulario.reset();
 	reinciarObjetoCita();
 	formularioInput.value = "Registrar Paciente";
-	editando = false;
+	editando.value = false;
 }
 
-function reinciarObjetoCita() {
+export function reinciarObjetoCita() {
 	// Reinciar el obj
 
 	Object.assign(citaObj, {
@@ -57,28 +68,20 @@ function reinciarObjetoCita() {
 	// citaObj.sintomas = "";
 }
 
-function generarId() {
+export function generarId() {
 	return Math.random().toString(36).substring(2) + Date.now();
 }
 
-function cargarEdicion(cita) {
+export function cargarEdicion(cita) {
 	Object.assign(citaObj, cita);
 
 	pacienteInput.value = cita.paciente;
 	propietarioInput.value = cita.propietario;
-	emialInput.value = cita.email;
+	emailInput.value = cita.email;
 	fechaInput.value = cita.fecha;
 	sintomasInput.value = cita.sintomas;
 
-	editando = true;
+	editando.value = true;
 
 	formularioInput.value = "Guardar Cambios";
 }
-
-export default {
-	datosCitas,
-	submitCita,
-	reinciarObjetoCita,
-	generarId,
-	cargarEdicion,
-};

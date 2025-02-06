@@ -1,4 +1,6 @@
-let editando = false;
+import { generarId } from "./funciones.js";
+
+let editando = { value: false };
 
 // Obj de Cita
 const citaObj = {
@@ -10,4 +12,4 @@ const citaObj = {
 	sintomas: "",
 };
 
-export default { editando, citaObj };
+export { citaObj, editando };

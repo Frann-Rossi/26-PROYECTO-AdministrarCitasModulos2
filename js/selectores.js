@@ -1,12 +1,12 @@
 // Selectores
-const pacienteInput = document.querySelector("#paciente");
-const propietarioInput = document.querySelector("#propietario");
-const emialInput = document.querySelector("#email");
-const fechaInput = document.querySelector("#fecha");
-const sintomasInput = document.querySelector("#sintomas");
+export const pacienteInput = document.querySelector("#paciente");
+export const propietarioInput = document.querySelector("#propietario");
+export const emailInput = document.querySelector("#email");
+export const fechaInput = document.querySelector("#fecha");
+export const sintomasInput = document.querySelector("#sintomas");
 
-const formulario = document.querySelector("#formulario-cita");
-const formularioInput = document.querySelector(
+export const formulario = document.querySelector("#formulario-cita");
+export const formularioInput = document.querySelector(
 	"#formulario-cita input[type='submit']"
 );
-const contenedorCitas = document.querySelector("#citas");
+export const contenedorCitas = document.querySelector("#citas");
